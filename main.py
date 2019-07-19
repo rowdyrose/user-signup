@@ -5,9 +5,7 @@ import os
 app = Flask(__name__)
 app.config['DEBUG'] = True
 
-@app.route("/", methods=['POST'])
-def index():
-    return render_template('form.html')
+
 
 # validate user name
 def validate_user(username):
@@ -30,34 +28,29 @@ def validate_verifypass(password, verifypass):
     verifypass_error = "Your password fields do not match, please re-enter"
     if verifypass != password:
         return verifypass_error
+    else
+        return 
 
 
 
 #validate user email
     #only validating if something is entered in this field
-#def validater email if email is entered
-        #if email != "":
+def validate_email
+        if email != "":
                 #return True
        #  elif email == 
 
 
 
 # if there are no errors, return the welcome message
-i
 
+@app.route("/", methods=['POSTef index():
+    return render_template('form.html')
 
 
 @app.route("/signup_complete", methods=['post'])
 def signup_complete():
-    
-    username = request.form['username']
-    password = request.form[ 'password']
-    verifypass = request.form['verifypass']
-    #email = request.form['email']
-    
-    validate_user(username)
-    validate_password(password)
-    validate_verifypass(verifypass)
+
     return render_template('welcome_page.html', name=username)
 
 app.run()
