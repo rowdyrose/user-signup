@@ -9,9 +9,9 @@ app.config['DEBUG'] = True
 # validate user name
 def validate_user(username):
     username_error = ""
-    username_error = "Please enter a valid username that is between 3 and 20 characters in length with no spaces"
     if len(username) < 3 or len(username) > 20 or username =="" or  " " in username:
-        return username_error
+        username_error = "Please enter a valid username that is between 3 and 20 characters in length with no spaces"
+    return username_error
 
 # validate  password
 def validate_password(password):
@@ -25,7 +25,7 @@ def validate_verifypass(password, verifypass):
     verifypass_error = ""
     if verifypass != password:
         verifypass_error = "Your password fields do not match, please re-enter"
-        return verifypass_error
+    return verifypass_error
 
 
 #validate user email
@@ -34,7 +34,7 @@ def validate_email(email):
 # if email contains more than one @ and more than one . , return error message
     if email > " " or len(email) < 3 or len(email) > 20 or " " in email:
         email_error = "please enter a valid email address"
-        return email_error
+    return email_error
   
     at_symbol = "@"
     at_symbol_count = email.count(at_symbol)
@@ -73,7 +73,7 @@ def validate():
 	    email_error_error = validate_email(email)
 
     if user_error or pass_error or verify_error or email_error_error:
-        return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error )
+        return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error, username=username, email=email )
  
  # if there are no errors, return the welcome message
     else:
