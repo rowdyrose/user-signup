@@ -17,43 +17,41 @@ def validate_user(username):
         return username_error
 
 #validate  password
+#def validate_password(password):
+#    password_error = ""
+#    if password == "" or len(password) < 3 or len(password) > 20:
+#        password_error = "please enter a valid password between 3 to 20 characvters in length"
+#        return password_error
 
-def validate_password(password):
-    password_error = ""
-    if password == "" or len(password) < 3 or len(password) > 20:
-        password_error = "please enter a valid password between 3 to 20 characvters in length"
-        return password_error
 # validate password verify input
-
-def validate_verifypass(password, verifypass):
-    verifypass_error = ""
-    if verifypass != password:
-        verifypass_error = "Your password fields do not match, please re-enter"
-        return verifypass_error
+#def validate_verifypass(password, verifypass):
+#    verifypass_error = ""
+#    if verifypass != password:
+#        verifypass_error = "Your password fields do not match, please re-enter"
+#        return verifypass_error
 
 
 #validate user email
-  
-def validate_email(email):
-    email_error = ""
+#def validate_email(email):
+#    email_error = ""
         # if email contains more than one @ and more than one . , return error message
-    if email == " " or len(email) < 3 or len(email) > 20:
-        email_error = "please enter a valid email address"
-        return email_error
+#    if email == " " or len(email) < 3 or len(email) > 20:
+#        email_error = "please enter a valid email address"
+#        return email_error
    
-    at_symbol = "@"
-    at_symbol_count = email.count(at_symbol)
+#    at_symbol = "@"
+#    at_symbol_count = email.count(at_symbol)
     
-    if at_symbol_count != 1:
-        email_error = "please enter a valid email address"
-        return email_error
+#    if at_symbol_count != 1:
+#        email_error = "please enter a valid email address"
+#        return email_error
 
-    period = "."
-    period_count = email.count(period)
-    
-    if period_count != 1:
-        email_error = "please enter a valid email address"
-        return email_error
+#    period = "."
+#    period_count = email.count(period)
+   
+#    if period_count != 1:
+#        email_error = "please enter a valid email address"
+#        return email_error
                      
 
 
@@ -67,14 +65,18 @@ def index():
 def validate():
 
     username = request.form["username"]
-    password = request.form["password"]
-    verifypass = request.form["verifypass"]
-    email = request.form["email"]
+#    password = request.form["password"]
+#    verifypass = request.form["verifypass"]
+#    email = request.form["email"]
     
-    if email != "":
-            validate_email(email)
-                
-    return render_template('index.html')
+    user_error = validate_user(username)
+
+#    if email != "":
+#        validate_email(email)
+
+    if user_error:
+
+        return render_template('index.html', user_error_placeholder=user_error)
 
 # if there are no errors, return the welcome message
 
