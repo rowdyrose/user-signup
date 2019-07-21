@@ -32,21 +32,13 @@ def validate_verifypass(password, verifypass):
 def validate_email(email):
     email_error = ""
 # if email contains more than one @ and more than one . , return error message
-    if len(email) < 3 or len(email) > 20 or " " in email:
-        email_error = "please enter a valid email address"
-    return email_error
-  
     at_symbol = "@"
     at_symbol_count = email.count(at_symbol)
-   
-    if at_symbol_count != 1:
-        email_error = "please enter a valid email address"
-        return email_error
 
     period = "."
     period_count = email.count(period)
    
-    if period_count != 1:
+    if len(email) < 3 or len(email) > 20 or " " in email or at_symbol_count != 1 or period_count != 1 :
         email_error = "please enter a valid email address"
         return email_error
 
