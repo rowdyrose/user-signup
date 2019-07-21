@@ -17,8 +17,8 @@ def validate_user(username):
 def validate_password(password):
     password_error = ""
     if password == "" or len(password) < 3 or len(password) > 20 or " " in password:
-        password_error = "please enter a valid password between 3 to 20 characvters in length with no spaces"
-        return password_error
+            password_error = "please enter a valid password between 3 to 20 characvters in length with no spaces"
+    return password_error
 
 # validate password verify input
 def validate_verifypass(password, verifypass):
@@ -32,7 +32,7 @@ def validate_verifypass(password, verifypass):
 def validate_email(email):
     email_error = ""
 # if email contains more than one @ and more than one . , return error message
-    if email > " " or len(email) < 3 or len(email) > 20 or " " in email:
+    if len(email) < 3 or len(email) > 20 or " " in email:
         email_error = "please enter a valid email address"
     return email_error
   
@@ -66,11 +66,10 @@ def validate():
     user_error = validate_user(username)
     pass_error = validate_password(password)
     verify_error = validate_verifypass(password, verifypass)
-    email_error_error = validate_email(email)
 
     email_error_error = ""
     if email != "":
-	    email_error_error = validate_email(email)
+        email_error_error = validate_email(email)
 
     if user_error or pass_error or verify_error or email_error_error:
         return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error, username=username, email=email )
