@@ -40,7 +40,7 @@ def validate_email(email):
    
     if len(email) < 3 or len(email) > 20 or " " in email or at_symbol_count != 1 or period_count != 1 :
         email_error = "please enter a valid email address"
-        return email_error
+    return email_error
 
 
 @app.route("/", methods=['GET'])
