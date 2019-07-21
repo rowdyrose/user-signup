@@ -75,22 +75,13 @@ def validate():
     verify_error = validate_verifypass(password, verifypass)
     email_error_error = validate_email(email)
 
-
-
-    if user_error:
-        return render_template('index.html', user_error_placeholder=user_error)
-    
-    if pass_error:
-        return render_template('index.html', password_error_placeholder=pass_error)
-    
-    if verify_error:
-        return render_template('index.html', verifypass_error_placeholder=verify_error)
-
     if email != "":
         validate_email(email)
 
-        if email_error_error:
-            return render_template('index.html', email_error_placeholder=email_error_error)
+    if user_error or pass_error or verify_error or email_error_error:
+        return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error)
+    
+
 
 # if there are no errors, return the welcome message
     else:
