@@ -9,13 +9,13 @@ app.config['DEBUG'] = True
 # validate user name
 def validate_user(username):
     username_error = "Please enter a valid username that is between 3 and 20 characters in length with no spaces"
-    if len(username) < 3 or len(username) > 20 or username =="" or username == " ":
+    if len(username) < 3 or len(username) > 20 or username =="" or " ":
         return username_error
 
 # validate  password
 def validate_password(password):
     password_error = ""
-    if password == "" or len(password) < 3 or len(password) > 20 or password == " ":
+    if password == "" or len(password) < 3 or len(password) > 20 or " ":
         password_error = "please enter a valid password between 3 to 20 characvters in length with no spaces"
         return password_error
 
@@ -32,7 +32,7 @@ def validate_email(email):
     email_error = ""
 
 # if email contains more than one @ and more than one . , return error message
-    if email == " " or len(email) < 3 or len(email) > 20:
+    if " " or len(email) < 3 or len(email) > 20:
         email_error = "please enter a valid email address"
         return email_error
   
