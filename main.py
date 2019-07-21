@@ -8,19 +8,15 @@ app.config['DEBUG'] = True
 
 # validate user name
 def validate_user(username):
-    username_error = ""
-    if len(username) < 3 or len(username) > 20 or username =="":   
-        username_error = "Please enter a valid username that is between 3 and 20 characters in length"
-        return username_error
-    elif " " in username:
-        username_error = "Please enter a user name with out spaces"
+    username_error = "Please enter a valid username that is between 3 and 20 characters in length with no spaces"
+    if len(username) < 3 or len(username) > 20 or username =="" or username == " ":
         return username_error
 
 # validate  password
 def validate_password(password):
     password_error = ""
-    if password == "" or len(password) < 3 or len(password) > 20:
-        password_error = "please enter a valid password between 3 to 20 characvters in length"
+    if password == "" or len(password) < 3 or len(password) > 20 or password == " ":
+        password_error = "please enter a valid password between 3 to 20 characvters in length with no spaces"
         return password_error
 
 # validate password verify input
@@ -53,9 +49,6 @@ def validate_email(email):
     if period_count != 1:
         email_error = "please enter a valid email address"
         return email_error
-                     
-
-
 
 
 @app.route("/", methods=['GET'])
@@ -75,11 +68,12 @@ def validate():
     verify_error = validate_verifypass(password, verifypass)
     email_error_error = validate_email(email)
 
+    email_error_error = ""
     if email != "":
-        validate_email(email)
+	    email_error_error = validate_email(email)
 
     if user_error or pass_error or verify_error or email_error_error:
-        return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error)
+        return render_template('index.html', user_error_placeholder=user_error, password_error_placeholder=pass_error, verifypass_error_placeholder=verify_error, email_error_placeholder=email_error_error )
     
 
 
